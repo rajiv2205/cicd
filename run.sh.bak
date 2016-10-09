@@ -1,0 +1,9 @@
+#! /bin/bash
+#METAJOB="docker"
+#docker start agitated_davinci
+#docker build -t oneclick:adminv1 .
+#docker run -p 8080:8080 -p 50000:50000  -d oneclick:adminv1
+#sleep 60
+java -jar jenkins-cli.jar -s http://localhost:8081 groovy permission.groovy --username admin --password admin@123
+java -jar jenkins-cli.jar -s http://localhost:8081 create-job METAJOB < meta.xml.erb --username admin --password admin@123
+java -jar jenkins-cli.jar -s http://localhost:8081 build METAJOB --username admin --password admin@123
